@@ -6,7 +6,7 @@ const projects = [
     title: 'NeuroAnimate',
     category: 'GENERATIVE AI · MULTI-MODEL · DUAL-GPU',
     subtitle: 'Multimodal Synthesis for 3D-styled Imagery',
-    description: 'A six-stage generative pipeline that converts a single text prompt into a fully animated, hyper-realistic portrait video. Stage 1: Mistral-7B rewrites the user prompt into a cinematic scene description. Stage 2: Stable Diffusion XL synthesizes a high-fidelity base portrait. Stage 3: InsightFace extracts and aligns facial identity landmarks. Stage 4: LivePortrait drives 3D-aware facial retargeting with custom body motion templates. Stage 5: Real-ESRGAN upscales every frame to 4K clarity. Stage 6: FFmpeg composites the final MP4 with audio sync. Dynamic Memory Orchestration loads and unloads each model sequentially, fitting 60.1 GB of combined weights into just 32 GB of dual-T4 VRAM. Dual-GPU parallel frame enhancement cuts upscaling latency by 33.1%. Three-mode LLM prompt enhancement achieves a CLIP alignment score of 0.35.',
+    description: 'A six-stage generative pipeline that converts a single text prompt into a fully animated, hyper-realistic portrait video. Mistral-7B rewrites the user prompt into a cinematic scene description. Stable Diffusion XL synthesizes a high-fidelity base portrait. InsightFace extracts and aligns facial identity landmarks while LivePortrait drives 3D-aware facial retargeting with custom body motion templates. Lastly, Real-ESRGAN upscales every frame to 1.5x clarity. FFmpeg composites the final MP4 with audio sync. DMO loads/unloads each model sequentially, fitting 60.1 GB of combined weights into 32 GB of dual-T4 VRAM. Dual-GPU parallel frame enhancement cuts upscaling latency by 33.1%. while Three-mode LLM prompt enhancement achieves a CLIP alignment score of 0.35.',
     tech: ['PyTorch', 'Diffusers', 'ONNX Runtime', 'CUDA', 'Gradio', 'LivePortrait', 'InsightFace', 'Real-ESRGAN'],
     github: 'https://github.com/haffiirfan/NeuroAnimate-Multimodal-Synthesis-for-3D-styled-imagery-hyper-realistic-Shorts',
     metrics: ['60.1 GB in 32 GB VRAM', '33.1% faster upscaling', 'CLIP 0.35', '6 Models Orchestrated'],
@@ -57,9 +57,9 @@ const miniProjects = [
   }
 ];
 
-/* ── Flippable Featured Card ────────────────────────── */
+/* ── Featured Card with smooth slide revert ──────────── */
 const FeaturedCard = ({ project, index }) => {
-  const [flipped, setFlipped] = useState(false);
+  const [showResults, setShowResults] = useState(false);
 
   return (
     <motion.div
@@ -67,94 +67,85 @@ const FeaturedCard = ({ project, index }) => {
       whileInView={{ opacity: 1, y: 0 }}
       viewport={{ once: true }}
       transition={{ delay: index * 0.15, duration: 0.6 }}
-      className="perspective-[1200px] w-full"
+      className="w-full rounded-[2rem] p-2 bg-white border border-gray-200 shadow-[0_15px_40px_rgba(0,0,0,0.06)] hover:shadow-[0_20px_50px_rgba(128,0,0,0.12)] hover:-rotate-1 hover:scale-[1.01] transition-all duration-500 relative overflow-hidden"
     >
-      <div
-        className={`relative w-full transition-transform duration-700 [transform-style:preserve-3d] ${flipped ? '[transform:rotateY(180deg)]' : ''}`}
-      >
-        {/* ── FRONT ──────────────────────────────── */}
-        <div className="w-full [backface-visibility:hidden] rounded-[2rem] p-2 bg-white border border-gray-200 shadow-[0_15px_40px_rgba(0,0,0,0.06)] hover:shadow-[0_20px_50px_rgba(128,0,0,0.12)] hover:-rotate-1 hover:scale-[1.02] transition-all duration-500 relative">
-          {/* Pin */}
-          <div className="w-5 h-5 bg-gradient-to-br from-gray-300 to-gray-100 rounded-full shadow-[inset_0_2px_4px_rgba(0,0,0,0.3)] absolute top-4 left-1/2 -translate-x-1/2 border border-gray-300 z-10 flex items-center justify-center">
-            <div className="w-2 h-2 bg-gray-800 rounded-full opacity-20"></div>
-          </div>
+      {/* Pin */}
+      <div className="w-5 h-5 bg-gradient-to-br from-gray-300 to-gray-100 rounded-full shadow-[inset_0_2px_4px_rgba(0,0,0,0.3)] absolute top-4 left-1/2 -translate-x-1/2 border border-gray-300 z-10 flex items-center justify-center">
+        <div className="w-2 h-2 bg-gray-800 rounded-full opacity-20"></div>
+      </div>
 
-          <div className="w-full rounded-[1.5rem] mt-8 p-8 bg-[#f8f8f8]">
-            <div className="flex items-center gap-3 mb-1">
-              <h3 className="text-xl font-black text-gray-900">{project.title}</h3>
-              <a
-                href={project.github}
-                target="_blank"
-                rel="noopener noreferrer"
-                className="ml-auto opacity-40 hover:opacity-100 transition-opacity"
-              >
-                <svg className="w-5 h-5 text-gray-700" fill="currentColor" viewBox="0 0 24 24">
-                  <path d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z"/>
-                </svg>
-              </a>
-            </div>
-
-            <p className="text-[10px] font-bold text-[#800000] uppercase tracking-[0.15em] mb-4">{project.category}</p>
-            <p className="text-sm text-gray-500 leading-relaxed mb-6">{project.description}</p>
-
-            {/* Metrics */}
-            <div className="flex flex-wrap gap-2 mb-5">
-              {project.metrics.map((m, j) => (
-                <span key={j} className="px-3 py-1 text-[10px] font-bold bg-[#800000]/8 text-[#800000] rounded-full border border-[#800000]/10">
-                  {m}
-                </span>
-              ))}
-            </div>
-
-            {/* Tech stack */}
-            <div className="flex flex-wrap gap-2 mb-5">
-              {project.tech.map((t, j) => (
-                <span key={j} className="px-2.5 py-1 text-xs font-medium text-gray-600 bg-white border border-gray-200 rounded-full">
-                  {t}
-                </span>
-              ))}
-            </div>
-
-            {/* Flip button */}
-            <button
-              onClick={() => setFlipped(true)}
-              className="mt-2 px-5 py-2 bg-[#800000] text-white text-xs font-bold rounded-full hover:bg-[#600000] transition-colors duration-300 flex items-center gap-2"
+      <div className="w-full rounded-[1.5rem] mt-8 relative">
+        {/* Content wrapper with slide transition */}
+        <AnimatePresence mode="wait">
+          {!showResults ? (
+            /* ── FRONT: Details ───────────────── */
+            <motion.div
+              key="front"
+              initial={{ opacity: 0, x: -20 }}
+              animate={{ opacity: 1, x: 0 }}
+              exit={{ opacity: 0, x: -20 }}
+              transition={{ duration: 0.3 }}
+              className="p-8 bg-[#f8f8f8] rounded-[1.5rem]"
             >
-              <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24" strokeWidth="2"><path strokeLinecap="round" strokeLinejoin="round" d="M15 10l4.553-2.276A1 1 0 0121 8.618v6.764a1 1 0 01-1.447.894L15 14M5 18h8a2 2 0 002-2V8a2 2 0 00-2-2H5a2 2 0 00-2 2v8a2 2 0 002 2z" /></svg>
-              View Results
-            </button>
-          </div>
-        </div>
-
-        {/* ── BACK ───────────────────────────────── */}
-        <div className="w-full absolute top-0 left-0 [backface-visibility:hidden] [transform:rotateY(180deg)] rounded-[2rem] p-2 bg-[#800000] border border-rose-800 shadow-[0_20px_50px_rgba(128,0,0,0.4)] transition-all duration-500 relative">
-          {/* Pin */}
-          <div className="w-5 h-5 bg-gradient-to-br from-gray-300 to-gray-100 rounded-full shadow-[inset_0_2px_4px_rgba(0,0,0,0.3)] absolute top-4 left-1/2 -translate-x-1/2 border border-gray-300 z-10 flex items-center justify-center">
-            <div className="w-2 h-2 bg-gray-800 rounded-full opacity-20"></div>
-          </div>
-
-          <div className="w-full rounded-[1.5rem] mt-8 p-8 bg-[#4d0000]/50 min-h-[400px] flex flex-col items-center justify-center text-center">
-            <span className="text-[10px] font-bold text-white/40 uppercase tracking-[0.2em] mb-3">Results Preview</span>
-            <h3 className="text-2xl font-black text-white mb-4">{project.title}</h3>
-
-            {/* Placeholder for video / screen recordings */}
-            <div className="w-full aspect-video bg-black/30 rounded-2xl border-2 border-dashed border-white/20 flex items-center justify-center mb-6">
-              <div className="text-center">
-                <svg className="w-12 h-12 text-white/30 mx-auto mb-3" fill="none" stroke="currentColor" viewBox="0 0 24 24" strokeWidth="1.5"><path strokeLinecap="round" strokeLinejoin="round" d="M21 12a9 9 0 11-18 0 9 9 0 0118 0z" /><path strokeLinecap="round" strokeLinejoin="round" d="M15.91 11.672a.375.375 0 010 .656l-5.603 3.113a.375.375 0 01-.557-.328V8.887c0-.286.307-.466.557-.327l5.603 3.112z" /></svg>
-                <p className="text-white/40 text-xs font-medium">{project.resultPlaceholder}</p>
+              <div className="flex items-center gap-3 mb-1">
+                <h3 className="text-xl font-black text-gray-900">{project.title}</h3>
+                <a href={project.github} target="_blank" rel="noopener noreferrer" className="ml-auto opacity-40 hover:opacity-100 transition-opacity">
+                  <svg className="w-5 h-5 text-gray-700" fill="currentColor" viewBox="0 0 24 24">
+                    <path d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z"/>
+                  </svg>
+                </a>
               </div>
-            </div>
-
-            {/* Back button */}
-            <button
-              onClick={() => setFlipped(false)}
-              className="px-5 py-2 bg-white text-[#800000] text-xs font-bold rounded-full hover:bg-gray-100 transition-colors duration-300 flex items-center gap-2"
+              <p className="text-[10px] font-bold text-[#800000] uppercase tracking-[0.15em] mb-4">{project.category}</p>
+              <p className="text-sm text-gray-500 leading-relaxed mb-6">{project.description}</p>
+              <div className="flex flex-wrap gap-2 mb-5">
+                {project.metrics.map((m, j) => (
+                  <span key={j} className="px-3 py-1 text-[10px] font-bold bg-[#800000]/8 text-[#800000] rounded-full border border-[#800000]/10">{m}</span>
+                ))}
+              </div>
+              <div className="flex flex-wrap gap-2 mb-5">
+                {project.tech.map((t, j) => (
+                  <span key={j} className="px-2.5 py-1 text-xs font-medium text-gray-600 bg-white border border-gray-200 rounded-full">{t}</span>
+                ))}
+              </div>
+              <button
+                onClick={() => setShowResults(true)}
+                className="px-5 py-2 bg-[#800000] text-white text-xs font-bold rounded-full hover:bg-[#600000] transition-colors duration-300 flex items-center gap-2"
+              >
+                <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24" strokeWidth="2"><path strokeLinecap="round" strokeLinejoin="round" d="M15 10l4.553-2.276A1 1 0 0121 8.618v6.764a1 1 0 01-1.447.894L15 14M5 18h8a2 2 0 002-2V8a2 2 0 00-2-2H5a2 2 0 00-2 2v8a2 2 0 002 2z" /></svg>
+                View Results
+              </button>
+            </motion.div>
+          ) : (
+            /* ── BACK: Results ────────────────── */
+            <motion.div
+              key="back"
+              initial={{ opacity: 0, x: 20 }}
+              animate={{ opacity: 1, x: 0 }}
+              exit={{ opacity: 0, x: 20 }}
+              transition={{ duration: 0.3 }}
+              className="p-8 bg-[#0a0a0a] rounded-[1.5rem] min-h-[300px] flex flex-col"
             >
-              <svg className="w-4 h-4 rotate-180" fill="none" stroke="currentColor" viewBox="0 0 24 24" strokeWidth="2"><path strokeLinecap="round" strokeLinejoin="round" d="M9 5l7 7-7 7"/></svg>
-              Back to Details
-            </button>
-          </div>
-        </div>
+              <span className="text-[10px] font-bold text-white/30 uppercase tracking-[0.2em] mb-2">Results Preview</span>
+              <h3 className="text-xl font-black text-white mb-6">{project.title}</h3>
+
+              {/* Video placeholder */}
+              <div className="w-full aspect-video bg-white/5 rounded-xl border border-white/10 flex items-center justify-center mb-6 flex-grow">
+                <div className="text-center">
+                  <svg className="w-10 h-10 text-white/20 mx-auto mb-2" fill="none" stroke="currentColor" viewBox="0 0 24 24" strokeWidth="1.5"><path strokeLinecap="round" strokeLinejoin="round" d="M21 12a9 9 0 11-18 0 9 9 0 0118 0z" /><path strokeLinecap="round" strokeLinejoin="round" d="M15.91 11.672a.375.375 0 010 .656l-5.603 3.113a.375.375 0 01-.557-.328V8.887c0-.286.307-.466.557-.327l5.603 3.112z" /></svg>
+                  <p className="text-white/30 text-xs">{project.resultPlaceholder}</p>
+                </div>
+              </div>
+
+              <button
+                onClick={() => setShowResults(false)}
+                className="self-start px-5 py-2 bg-white text-[#0a0a0a] text-xs font-bold rounded-full hover:bg-gray-200 transition-colors duration-300 flex items-center gap-2"
+              >
+                <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24" strokeWidth="2"><path strokeLinecap="round" strokeLinejoin="round" d="M15 19l-7-7 7-7"/></svg>
+                Back to Details
+              </button>
+            </motion.div>
+          )}
+        </AnimatePresence>
       </div>
     </motion.div>
   );
@@ -173,12 +164,13 @@ const Projects = () => {
           transition={{ duration: 0.6 }}
           className="mb-12"
         >
-          <span className="inline-block text-xs font-semibold text-black/50 uppercase tracking-widest px-3 py-1.5 border border-black/5 rounded-full mb-4">
-            Featured Work
-          </span>
-          <h2 className="text-3xl md:text-4xl font-black text-gray-900 tracking-tight">
-            Projects
+          <h2 className="text-4xl md:text-5xl lg:text-6xl font-black text-gray-900 tracking-tight leading-[1.1] mb-4">
+            Projects That Define<br/>My Journey
           </h2>
+          <div className="w-24 h-1.5 bg-[#800000] rounded-full mb-6"></div>
+          <p className="text-gray-500 text-base md:text-lg max-w-xl font-medium leading-relaxed">
+            A curated portfolio of production-grade AI systems, multi-model orchestration pipelines, and computer vision applications built for scale and impact.
+          </p>
         </motion.div>
 
         {/* Featured Projects */}
@@ -224,13 +216,9 @@ const Projects = () => {
                     <div className="w-full h-full rounded-[1.5rem] mt-8 p-6 flex flex-col bg-[#f8f8f8] min-h-[260px]">
                       <h3 className="text-lg font-black mb-3 tracking-tight text-gray-900">{project.title}</h3>
                       <p className="text-xs leading-relaxed font-medium text-gray-500 mb-6 flex-grow">{project.description}</p>
-
-                      {/* Tech stack */}
                       <div className="flex flex-wrap gap-2 mt-auto">
                         {project.tech.map((t, j) => (
-                          <span key={j} className="px-2 py-1 text-[10px] font-bold text-[#800000] bg-[#800000]/5 border border-[#800000]/10 rounded-md">
-                            {t}
-                          </span>
+                          <span key={j} className="px-2 py-1 text-[10px] font-bold text-[#800000] bg-[#800000]/5 border border-[#800000]/10 rounded-md">{t}</span>
                         ))}
                       </div>
                     </div>

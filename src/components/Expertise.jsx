@@ -56,7 +56,7 @@ const Expertise = () => {
       ref={containerRef}
       className="bg-white pt-24 pb-32 px-6 md:px-12 w-full relative overflow-hidden font-sans bg-[linear-gradient(to_right,#8080800a_1px,transparent_1px),linear-gradient(to_bottom,#8080800a_1px,transparent_1px)] bg-[size:80px_80px]"
     >
-      <div className="max-w-6xl mx-auto relative md:h-[1350px]">
+      <div className="max-w-6xl mx-auto relative md:h-[1600px]">
         {/* Header */}
         <div data-aos="fade-up" className="md:absolute top-10 left-0 md:w-[450px] z-20 mb-16 md:mb-0">
           <div className="inline-block border border-gray-300 rounded-full px-5 py-1.5 text-sm text-gray-600 font-bold mb-8 shadow-sm bg-white">My Expertise</div>
@@ -72,12 +72,12 @@ const Expertise = () => {
         </div>
 
         {/* Desktop SVG Animated Dashed Line */}
-        <svg className="hidden md:block absolute top-0 left-0 w-full h-[1350px] pointer-events-none z-0" viewBox="0 0 1000 1350" preserveAspectRatio="none">
-          <path d="M 650,200 C 400,300 200,400 300,600 C 400,800 750,750 700,950 C 650,1150 400,1150 300,1200" fill="none" stroke="#cbd5e1" strokeWidth="2" strokeDasharray="8 10" />
+        <svg className="hidden md:block absolute top-0 left-0 w-full h-[1600px] pointer-events-none z-0" viewBox="0 0 1000 1600" preserveAspectRatio="none">
+          <path d="M 650,350 C 400,450 200,550 300,750 C 400,950 750,900 700,1100 C 650,1300 400,1300 300,1400" fill="none" stroke="#cbd5e1" strokeWidth="2" strokeDasharray="8 10" />
           <mask id="path-mask">
-            <motion.path d="M 650,200 C 400,300 200,400 300,600 C 400,800 750,750 700,950 C 650,1150 400,1150 300,1200" fill="none" stroke="white" strokeWidth="20" style={{ pathLength }} />
+            <motion.path d="M 650,350 C 400,450 200,550 300,750 C 400,950 750,900 700,1100 C 650,1300 400,1300 300,1400" fill="none" stroke="white" strokeWidth="20" style={{ pathLength }} />
           </mask>
-          <path d="M 650,200 C 400,300 200,400 300,600 C 400,800 750,750 700,950 C 650,1150 400,1150 300,1200" fill="none" stroke="black" strokeWidth="2" strokeDasharray="8 10" mask="url(#path-mask)" className="drop-shadow-sm" />
+          <path d="M 650,350 C 400,450 200,550 300,750 C 400,950 750,900 700,1100 C 650,1300 400,1300 300,1400" fill="none" stroke="black" strokeWidth="2" strokeDasharray="8 10" mask="url(#path-mask)" className="drop-shadow-sm" />
         </svg>
 
         {/* Mobile vertical line */}
@@ -91,12 +91,12 @@ const Expertise = () => {
 
         {/* Cards */}
         <div className="flex flex-col gap-8 md:gap-12 items-center md:block relative z-10 w-full pt-4 md:pt-0 pb-12 md:pb-0">
-          <TagCard number="01" title="Generative AI Pipelines" text="Orchestrating multi-model inference chains — LLMs, diffusion models, super-resolution — with dynamic memory scheduling that fits 60+ GB of models into 32 GB of consumer GPU memory." className="md:absolute md:top-[10px] md:right-[5%] lg:right-[10%] rotate-2 md:rotate-6" aosType="fade-left" aosDelay="100" pathLength={pathLength} containerRef={containerRef} />
-          <TagCard number="02" title="Computer Vision Systems" text="Real-time object detection, face analysis, and video processing pipelines. Fine-tuned YOLO models on large-scale datasets with production-grade inference over WebSocket streams." className="md:absolute md:top-[450px] md:left-[5%] lg:left-[10%] -rotate-2 md:-rotate-6" aosType="fade-right" aosDelay="200" pathLength={pathLength} containerRef={containerRef} />
-          <TagCard number="03" title="GPU Memory Engineering" text="Dynamic Memory Orchestration — loading and unloading heterogeneous AI models one at a time, splitting inference across dual GPUs, and eliminating out-of-memory crashes on constrained hardware." className="md:absolute md:top-[700px] md:right-[5%] lg:right-[15%] rotate-1 md:rotate-3" aosType="fade-left" aosDelay="300" pathLength={pathLength} containerRef={containerRef} />
-          <TagCard number="04" title="Full-Stack AI Deployment" text="End-to-end systems from model training to FastAPI backends, React frontends, RAG pipelines with ChromaDB, and Gradio interfaces — built for real users, not just notebooks." className="md:absolute md:top-[1050px] md:left-[15%] lg:left-[25%] -rotate-1 md:-rotate-3" aosType="fade-right" aosDelay="400" pathLength={pathLength} containerRef={containerRef} />
+          <TagCard number="01" title="Generative AI Pipelines" text="Orchestrating multi-model inference chains including LLMs, diffusion models, and super-resolution with dynamic memory scheduling that fits 60+ GB of models into 32 GB of consumer GPU memory." className="md:absolute md:top-[280px] md:right-[5%] lg:right-[10%] rotate-2 md:rotate-6" aosType="fade-left" aosDelay="100" pathLength={pathLength} containerRef={containerRef} />
+          <TagCard number="02" title="Computer Vision Systems" text="Real-time object detection, face analysis, and video processing pipelines. Fine-tuned YOLO models on large-scale datasets with production-grade inference over WebSocket streams." className="md:absolute md:top-[600px] md:left-[5%] lg:left-[10%] -rotate-2 md:-rotate-6" aosType="fade-right" aosDelay="200" pathLength={pathLength} containerRef={containerRef} />
+          <TagCard number="03" title="GPU Memory Engineering" text="Dynamic Memory Orchestration: loading and unloading heterogeneous AI models one at a time, splitting inference across dual GPUs, and eliminating out-of-memory crashes on constrained hardware." className="md:absolute md:top-[920px] md:right-[5%] lg:right-[15%] rotate-1 md:rotate-3" aosType="fade-left" aosDelay="300" pathLength={pathLength} containerRef={containerRef} />
+          <TagCard number="04" title="Full-Stack AI Deployment" text="End-to-end systems from model training to FastAPI backends, React frontends, RAG pipelines with ChromaDB, and Gradio interfaces built for real users, not just notebooks." className="md:absolute md:top-[1240px] md:left-[15%] lg:left-[25%] -rotate-1 md:-rotate-3" aosType="fade-right" aosDelay="400" pathLength={pathLength} containerRef={containerRef} />
 
-          <div data-aos="fade-in" data-aos-delay="600" className="hidden md:block absolute top-[1250px] left-[60%] font-serif text-3xl text-gray-600 rotate-6 italic">
+          <div data-aos="fade-in" data-aos-delay="600" className="hidden md:block absolute top-[1480px] left-[60%] font-serif text-3xl text-gray-600 rotate-6 italic">
             Turning research into reality!
           </div>
         </div>
