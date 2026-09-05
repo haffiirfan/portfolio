@@ -1,0 +1,67 @@
+html {
+  scroll-behavior: smooth;
+  overflow-x: hidden;
+}
+
+#resume,
+#project,
+#contact {
+  scroll-margin-top: 4rem;
+}
+
+body {
+  background-color: #F5F5F5;
+  color: #111827;
+  font-family: "DM Sans", "Syne", sans-serif;
+  transition: background-color 0.3s ease, color 0.3s ease;
+  overflow-x: hidden;
+  width: 100%;
+}
+
+html.dark body,
+.dark body {
+  background-color: #0c0d0e;
+  color: #f3f4f6;
+}
+
+.SyneClass {
+  font-family: "Syne", sans-serif !important;
+}
+
+#NavItems{
+  font-family: "Syne", sans-serif !important;
+  font-weight: 600;
+}
+#sidebar-items{
+  font-family: "Syne", sans-serif !important;
+  font-weight: 600;
+  font-size: x-large;
+}
+
+@keyframes bounce-slow {
+  0%, 100% { transform: translateY(-5%) rotate(6deg); }
+  50% { transform: translateY(0) rotate(6deg); }
+}
+
+.animate-bounce-slow {
+  animation: bounce-slow 4s ease-in-out infinite;
+}
+
+@keyframes spin-slow {
+  from { transform: rotate(0deg); }
+  to { transform: rotate(360deg); }
+}
+
+.animate-spin-slow {
+  animation: spin-slow 12s linear infinite;
+}
+
+@keyframes blob-morph {
+  0% { border-radius: 60% 40% 30% 70% / 60% 30% 70% 40%; }
+  50% { border-radius: 40% 60% 70% 30% / 40% 70% 30% 60%; }
+  100% { border-radius: 60% 40% 30% 70% / 60% 30% 70% 40%; }
+}
+
+.animate-blob-morph {
+  animation: blob-morph 8s ease-in-out infinite;
+}
