@@ -53,9 +53,9 @@ const Skills = () => {
         y: -8,
         transition: { type: 'spring', stiffness: 300, damping: 20 },
       }}
-      className="group relative bg-white border border-black/5 rounded-3xl p-6 h-fit shadow-sm hover:shadow-xl hover:shadow-red-500/5 transition-all duration-500"
+      className="group relative bg-white border border-black/5 rounded-3xl p-6 h-fit shadow-sm hover:shadow-xl hover:shadow-rose-900/5 transition-all duration-500"
     >
-      <div className="absolute inset-0 rounded-3xl bg-gradient-to-br from-red-500/0 via-red-500/0 to-red-500/0 group-hover:from-red-500/5 group-hover:to-red-500/5 transition-all duration-500 pointer-events-none" />
+      <div className="absolute inset-0 rounded-3xl bg-gradient-to-br from-rose-900/0 via-rose-900/0 to-rose-900/0 group-hover:from-rose-900/5 group-hover:to-rose-900/5 transition-all duration-500 pointer-events-none" />
       <div className="relative z-10">
         <h3 className="text-sm font-semibold text-black mb-4 tracking-tight">{category}</h3>
         <div className="flex flex-wrap gap-2">
@@ -65,7 +65,7 @@ const Skills = () => {
               variants={skillPillVariants}
               initial="initial"
               whileHover="hover"
-              className="px-3 py-1.5 text-xs font-medium text-black bg-black/3 hover:bg-red-500/10 border border-black/5 hover:border-red-500/20 rounded-full transition-all duration-300 cursor-default select-none hover:text-red-500"
+              className="px-3 py-1.5 text-xs font-medium text-black bg-black/3 hover:bg-rose-900/10 border border-black/5 hover:border-rose-900/20 rounded-full transition-all duration-300 cursor-default select-none hover:text-rose-900"
             >
               {skill}
             </motion.button>
@@ -117,15 +117,16 @@ const Skills = () => {
       <motion.div
         animate={{ y: [0, 8, 0], opacity: [0.03, 0.06, 0.03] }}
         transition={{ duration: 6, repeat: Infinity, ease: 'easeInOut' }}
-        className="absolute top-10 right-10 w-32 h-32 bg-red-500 rounded-full blur-3xl pointer-events-none"
+        className="absolute top-10 right-10 w-32 h-32 bg-rose-900 rounded-full blur-3xl pointer-events-none"
       />
       <motion.div
         animate={{ y: [0, -8, 0], opacity: [0.02, 0.04, 0.02] }}
         transition={{ duration: 8, repeat: Infinity, ease: 'easeInOut' }}
-        className="absolute bottom-20 left-5 w-40 h-40 bg-red-500 rounded-full blur-3xl pointer-events-none"
+        className="absolute bottom-20 left-5 w-40 h-40 bg-rose-900 rounded-full blur-3xl pointer-events-none"
       />
     </section>
   );
 };
 
 export default Skills;
+

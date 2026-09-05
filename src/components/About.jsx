@@ -3,7 +3,7 @@ import profileImage from '../assets/haffiCover.png';
 
 const About = () => {
   return (
-    <section id="about" className="bg-[#ff2a2a] pt-20 pb-40 px-6 md:px-12 w-full relative overflow-hidden font-sans">
+    <section id="about" className="bg-[#800000] pt-20 pb-40 px-6 md:px-12 w-full relative overflow-hidden font-sans">
       <div className="max-w-6xl mx-auto flex flex-col md:flex-row gap-16 items-start">
 
         {/* Left: Lanyard ID Badge */}
@@ -24,9 +24,12 @@ const About = () => {
 
         {/* Right: Info */}
         <div data-aos="fade-left" data-aos-delay="200" className="flex-1 text-white mt-8 md:mt-0 relative z-20">
-          <h2 className="text-4xl md:text-5xl font-black text-black mb-4">Hello!</h2>
-          <p className="text-lg font-bold mb-12 leading-relaxed max-w-3xl text-red-50">
-            Hi, my name is <span className="text-black text-xl font-black mx-1 tracking-wide uppercase">Haffi Irfan</span>, an AI engineer from Pakistan. I build multi-model generative AI pipelines and production computer vision systems. My first-author manuscript on multimodal synthesis is currently under peer review at a Springer Nature journal.
+          <h2 className="text-4xl md:text-5xl font-black text-black mb-4">Hello, I'm <span className="mx-2">✌️</span></h2>
+          <h1 className="text-6xl md:text-8xl font-black text-white mb-6 tracking-tight leading-none">
+            Haffi<br/>Irfan
+          </h1>
+          <p className="text-lg md:text-xl font-medium mb-12 leading-relaxed max-w-3xl text-white/90">
+            BS Software Engineering graduate specializing in Artificial Intelligence, with a manuscript under peer review at a Springer Nature journal on multimodal generative AI. Architected a 6-model synthesis pipeline and production-grade computer vision-NLP systems, engineering GPU-efficient orchestration, real-time inference, and RAG-driven intelligence from research to full-stack deployment.
           </p>
 
           {/* Tech Icons (inline SVGs) */}

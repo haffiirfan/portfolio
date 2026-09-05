@@ -18,7 +18,7 @@ const Navbar = () => {
     <nav
       className={`fixed top-0 left-0 w-full z-50 transition-all duration-500 ${
         isOpen
-          ? 'bg-[#ff2a2a] py-4'
+          ? 'bg-[#800000] py-4'
           : isScrolled
             ? 'bg-white/70 backdrop-blur-xl py-3 border-b border-gray-200/50 shadow-[0_4px_30px_rgba(0,0,0,0.03)]'
             : 'bg-transparent py-5'
@@ -32,7 +32,7 @@ const Navbar = () => {
               isOpen || !isScrolled ? 'text-white' : 'text-gray-900'
             }`}
           >
-            Haffi <span className="text-[#ff2a2a]">.</span>
+            Haffi <span className="text-[#800000]">.</span>
           </a>
         </div>
 
@@ -46,7 +46,7 @@ const Navbar = () => {
               }`}
             >
               {link}
-              <span className="absolute -bottom-1 left-0 w-0 h-[2px] bg-[#ff2a2a] transition-all duration-300 group-hover:w-full"></span>
+              <span className="absolute -bottom-1 left-0 w-0 h-[2px] bg-[#800000] transition-all duration-300 group-hover:w-full"></span>
             </a>
           ))}
         </div>
@@ -56,7 +56,7 @@ const Navbar = () => {
             href="#contact"
             className={`px-6 py-2.5 rounded-full text-sm font-black transition-all duration-500 ${
               isScrolled
-                ? 'bg-gray-900 text-white hover:bg-[#ff2a2a] hover:shadow-[0_10px_25px_rgba(255,42,42,0.25)]'
+                ? 'bg-gray-900 text-white hover:bg-[#800000] hover:shadow-[0_10px_25px_rgba(128,0,0,0.25)]'
                 : 'bg-white/10 border border-white/20 text-white hover:bg-white hover:text-black backdrop-blur-md'
             }`}
           >
@@ -84,7 +84,7 @@ const Navbar = () => {
 
       <div
         className={`md:hidden absolute top-full left-0 w-full transition-all duration-500 ease-in-out ${
-          isOpen ? 'max-h-[460px] py-6 opacity-100 bg-[#ff2a2a] shadow-2xl' : 'max-h-0 opacity-0 pointer-events-none'
+          isOpen ? 'max-h-[460px] py-6 opacity-100 bg-[#800000] shadow-2xl' : 'max-h-0 opacity-0 pointer-events-none'
         }`}
       >
         <div className="flex flex-col px-6 space-y-4">
@@ -102,7 +102,7 @@ const Navbar = () => {
             <a
               href="#contact"
               onClick={() => setIsOpen(false)}
-              className="inline-block px-6 py-3 rounded-full bg-white text-[#ff2a2a] font-black hover:bg-gray-950 hover:text-white transition-all duration-300 w-full text-center shadow-xl"
+              className="inline-block px-6 py-3 rounded-full bg-white text-[#800000] font-black hover:bg-gray-950 hover:text-white transition-all duration-300 w-full text-center shadow-xl"
             >
               Let's Talk
             </a>
@@ -114,3 +114,4 @@ const Navbar = () => {
 };
 
 export default Navbar;
+

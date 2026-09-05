@@ -48,7 +48,7 @@ const Projects = () => {
               viewport={{ once: true }}
               transition={{ delay: i * 0.15, duration: 0.6 }}
               whileHover={{ y: -8, transition: { type: 'spring', stiffness: 300, damping: 20 } }}
-              className="group bg-[#fafafa] border border-gray-100 rounded-3xl p-8 hover:shadow-2xl hover:shadow-red-500/5 transition-all duration-500"
+              className="group bg-[#fafafa] border border-gray-100 rounded-3xl p-8 hover:shadow-2xl hover:shadow-rose-900/5 transition-all duration-500"
             >
               <div className="flex items-center gap-3 mb-4">
                 <h3 className="text-xl font-black text-gray-900">{project.title}</h3>
@@ -64,13 +64,13 @@ const Projects = () => {
                 </a>
               </div>
 
-              <p className="text-xs font-bold text-[#ff2a2a] uppercase tracking-wider mb-3">{project.subtitle}</p>
+              <p className="text-xs font-bold text-[#800000] uppercase tracking-wider mb-3">{project.subtitle}</p>
               <p className="text-sm text-gray-500 leading-relaxed mb-6">{project.description}</p>
 
               {/* Metrics */}
               <div className="flex flex-wrap gap-2 mb-6">
                 {project.metrics.map((m, j) => (
-                  <span key={j} className="px-3 py-1 text-xs font-bold bg-[#ff2a2a]/8 text-[#ff2a2a] rounded-full border border-[#ff2a2a]/10">
+                  <span key={j} className="px-3 py-1 text-xs font-bold bg-[#800000]/8 text-[#800000] rounded-full border border-[#800000]/10">
                     {m}
                   </span>
                 ))}
@@ -93,3 +93,4 @@ const Projects = () => {
 };
 
 export default Projects;
+

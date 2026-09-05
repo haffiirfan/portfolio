@@ -19,7 +19,7 @@ const Preloader = () => {
           initial={{ y: 0 }}
           exit={{ y: "-100%" }}
           transition={{ duration: 1.2, ease: [0.76, 0, 0.24, 1] }}
-          className="fixed inset-0 w-full h-screen bg-[#ff2a2a] z-[100000] flex items-center justify-center"
+          className="fixed inset-0 w-full h-screen bg-[#800000] z-[100000] flex items-center justify-center"
         >
           <motion.div
             exit={{ opacity: 0, scale: 0.95, y: -20 }}
@@ -45,3 +45,4 @@ const Preloader = () => {
 };
 
 export default Preloader;
+

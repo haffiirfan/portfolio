@@ -24,7 +24,7 @@ const TagCard = ({ number, title, text, className, aosDelay, aosType, pathLength
       data-aos-delay={aosDelay}
       className={`w-72 sm:w-80 rounded-[2rem] p-2 relative flex flex-col items-center hover:scale-[1.02] transition-all duration-700 z-10 ${className} ${
         isActive
-          ? 'bg-[#ff2a2a] border-red-400 shadow-[0_20px_50px_rgba(255,42,42,0.4)]'
+          ? 'bg-[#800000] border-rose-800 shadow-[0_20px_50px_rgba(128,0,0,0.4)]'
           : 'bg-white border border-gray-200 shadow-[0_15px_40px_rgba(0,0,0,0.06)] hover:shadow-[0_20px_50px_rgba(0,0,0,0.12)]'
       }`}
     >
@@ -32,7 +32,7 @@ const TagCard = ({ number, title, text, className, aosDelay, aosType, pathLength
         <div className="w-2 h-2 bg-gray-800 rounded-full opacity-20"></div>
       </div>
       <div className={`w-full h-full rounded-[1.5rem] mt-8 p-8 flex flex-col min-h-[220px] transition-colors duration-700 ${
-        isActive ? 'bg-red-700/50' : 'bg-[#f4f4f4]'
+        isActive ? 'bg-[#4d0000]/50' : 'bg-[#f4f4f4]'
       }`}>
         <span className={`text-xl font-bold mb-2 font-serif italic transition-colors duration-700 ${isActive ? 'text-red-200' : 'text-gray-400'}`}>{number}</span>
         <h3 className={`text-2xl font-black mb-3 tracking-tight transition-colors duration-700 ${isActive ? 'text-white' : 'text-gray-900'}`}>{title}</h3>
@@ -106,3 +106,4 @@ const Expertise = () => {
 };
 
 export default Expertise;
+

@@ -17,7 +17,7 @@ const Hero = () => {
       <div
         className="absolute top-0 left-0 w-full h-full z-0"
         style={{
-          background: 'linear-gradient(-45deg, #0a0a0a, #1a0000, #ff2a2a, #8b0000, #0a0a0a)',
+          background: 'linear-gradient(-45deg, #0a0a0a, #1a0000, #800000, #8b0000, #0a0a0a)',
           backgroundSize: '400% 400%',
           animation: 'gradientShift 15s ease infinite',
         }}
@@ -86,3 +86,4 @@ const Hero = () => {
 };
 
 export default Hero;
+
