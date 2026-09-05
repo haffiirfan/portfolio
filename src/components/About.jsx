@@ -25,10 +25,10 @@ const About = () => {
         {/* Right: Info */}
         <div data-aos="fade-left" data-aos-delay="200" className="flex-1 text-white mt-8 md:mt-0 relative z-20">
           <p className="text-lg md:text-xl font-medium mb-8 leading-relaxed max-w-3xl text-white/90">
-            Over the past year I went deep into multi-model generative AI, reading papers on diffusion-based synthesis, memory-efficient inference, and 3D-aware portrait animation. That research became a first-author manuscript now under peer review at Springer Nature, and a working six-model pipeline that orchestrates 60 GB of weights on consumer GPUs. Every system I build starts from the literature, gets stress-tested on real hardware, and ships as production code.
+            Driven by an intense year of independent research into diffusion synthesis and memory-efficient inference, I authored a first-author manuscript currently under peer review at Springer Nature. My work bridges the gap between theoretical literature and systems engineering. Most notably, I engineered a six-model generative pipeline that dynamically orchestrates 60 GB of weights on constrained consumer hardware.
           </p>
           <p className="text-base md:text-lg font-medium leading-relaxed max-w-3xl text-white/70">
-            My work sits at the intersection of generative vision, GPU systems engineering, and full-stack deployment. From dual-GPU memory orchestration to real-time YOLO + RAG safety pipelines, I focus on turning recent research into robust, deployable systems that actually run outside a notebook.
+            Operating at the intersection of computer vision, GPU orchestration, and full-stack deployment, my focus is singular: transforming complex AI research into robust, production-grade systems.
           </p>
 
           {/* Tech Icons (inline SVGs) */}
