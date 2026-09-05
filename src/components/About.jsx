@@ -24,12 +24,11 @@ const About = () => {
 
         {/* Right: Info */}
         <div data-aos="fade-left" data-aos-delay="200" className="flex-1 text-white mt-8 md:mt-0 relative z-20">
-          <h2 className="text-4xl md:text-5xl font-black text-black mb-4">Hello, I'm <span className="mx-2">✌️</span></h2>
-          <h1 className="text-6xl md:text-8xl font-black text-white mb-6 tracking-tight leading-none">
-            Haffi<br/>Irfan
-          </h1>
-          <p className="text-lg md:text-xl font-medium mb-12 leading-relaxed max-w-3xl text-white/90">
-            BS Software Engineering graduate specializing in Artificial Intelligence, with a manuscript under peer review at a Springer Nature journal on multimodal generative AI. Architected a 6-model synthesis pipeline and production-grade computer vision-NLP systems, engineering GPU-efficient orchestration, real-time inference, and RAG-driven intelligence from research to full-stack deployment.
+          <p className="text-lg md:text-xl font-medium mb-8 leading-relaxed max-w-3xl text-white/90">
+            Over the past year I went deep into multi-model generative AI, reading papers on diffusion-based synthesis, memory-efficient inference, and 3D-aware portrait animation. That research became a first-author manuscript now under peer review at Springer Nature, and a working six-model pipeline that orchestrates 60 GB of weights on consumer GPUs. Every system I build starts from the literature, gets stress-tested on real hardware, and ships as production code.
+          </p>
+          <p className="text-base md:text-lg font-medium leading-relaxed max-w-3xl text-white/70">
+            My work sits at the intersection of generative vision, GPU systems engineering, and full-stack deployment. From dual-GPU memory orchestration to real-time YOLO + RAG safety pipelines, I focus on turning recent research into robust, deployable systems that actually run outside a notebook.
           </p>
 
           {/* Tech Icons (inline SVGs) */}

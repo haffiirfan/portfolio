@@ -46,7 +46,7 @@ const Research = () => {
                 OrchestraGen: A Unified Memory-Orchestrated Multi-Model Pipeline for Text-to-Avatar Synthesis
               </h3>
               <p className="text-white/50 text-sm font-medium">
-                Multimedia Systems — Springer Nature (MMSJ)
+                Multimedia Systems | Springer Nature (MMSJ)
               </p>
             </div>
           </div>
