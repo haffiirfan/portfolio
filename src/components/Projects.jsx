@@ -11,6 +11,28 @@ const projects = [
     github: 'https://github.com/haffiirfan/NeuroAnimate-Multimodal-Synthesis-for-3D-styled-imagery-hyper-realistic-Shorts',
     metrics: ['60.1 GB in 32 GB VRAM', '33.1% faster upscaling', 'CLIP 0.35', '6 Models Orchestrated'],
     resultPlaceholder: 'Screen recordings and demo videos coming soon',
+    videos: [
+      '/neuroanimate_results/videos/enhanced_output (3).mp4',
+      '/neuroanimate_results/videos/enhanced_output (5).mp4',
+      '/neuroanimate_results/videos/result1.mp4',
+      '/neuroanimate_results/videos/result2.mp4',
+      '/neuroanimate_results/videos/result4.mp4',
+    ],
+    images: [
+      '/neuroanimate_results/images/1.png',
+      '/neuroanimate_results/images/19.png',
+      '/neuroanimate_results/images/20.png',
+      '/neuroanimate_results/images/26.png',
+      '/neuroanimate_results/images/3.png',
+      '/neuroanimate_results/images/44.png',
+      '/neuroanimate_results/images/60.png',
+      '/neuroanimate_results/images/61.png',
+      '/neuroanimate_results/images/63.png',
+      '/neuroanimate_results/images/64.png',
+      '/neuroanimate_results/images/67.png',
+      '/neuroanimate_results/images/68.png',
+      '/neuroanimate_results/images/71.png',
+    ],
   },
   {
     title: 'SafetyIQ',
@@ -123,26 +145,69 @@ const FeaturedCard = ({ project, index }) => {
               animate={{ opacity: 1, x: 0 }}
               exit={{ opacity: 0, x: 20 }}
               transition={{ duration: 0.3 }}
-              className="p-8 bg-[#0a0a0a] rounded-[1.5rem] min-h-[300px] flex flex-col"
+              className="p-6 md:p-8 bg-[#0a0a0a] rounded-[1.5rem] h-[450px] flex flex-col relative"
             >
-              <span className="text-[10px] font-bold text-white/30 uppercase tracking-[0.2em] mb-2">Results Preview</span>
-              <h3 className="text-xl font-black text-white mb-6">{project.title}</h3>
-
-              {/* Video placeholder */}
-              <div className="w-full aspect-video bg-white/5 rounded-xl border border-white/10 flex items-center justify-center mb-6 flex-grow">
-                <div className="text-center">
-                  <svg className="w-10 h-10 text-white/20 mx-auto mb-2" fill="none" stroke="currentColor" viewBox="0 0 24 24" strokeWidth="1.5"><path strokeLinecap="round" strokeLinejoin="round" d="M21 12a9 9 0 11-18 0 9 9 0 0118 0z" /><path strokeLinecap="round" strokeLinejoin="round" d="M15.91 11.672a.375.375 0 010 .656l-5.603 3.113a.375.375 0 01-.557-.328V8.887c0-.286.307-.466.557-.327l5.603 3.112z" /></svg>
-                  <p className="text-white/30 text-xs">{project.resultPlaceholder}</p>
+              <div className="flex justify-between items-center mb-6 shrink-0">
+                <div>
+                  <span className="text-[10px] font-bold text-white/30 uppercase tracking-[0.2em] block mb-1">Results Preview</span>
+                  <h3 className="text-xl font-black text-white">{project.title}</h3>
                 </div>
+                <button
+                  onClick={() => setShowResults(false)}
+                  className="px-4 py-2 bg-white text-[#0a0a0a] text-xs font-bold rounded-full hover:bg-gray-200 transition-colors duration-300 flex items-center gap-2"
+                >
+                  <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24" strokeWidth="2"><path strokeLinecap="round" strokeLinejoin="round" d="M15 19l-7-7 7-7"/></svg>
+                  Back
+                </button>
               </div>
 
-              <button
-                onClick={() => setShowResults(false)}
-                className="self-start px-5 py-2 bg-white text-[#0a0a0a] text-xs font-bold rounded-full hover:bg-gray-200 transition-colors duration-300 flex items-center gap-2"
-              >
-                <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24" strokeWidth="2"><path strokeLinecap="round" strokeLinejoin="round" d="M15 19l-7-7 7-7"/></svg>
-                Back to Details
-              </button>
+              <div className="flex-grow overflow-y-auto custom-scrollbar pr-2 pb-4">
+                {project.videos || project.images ? (
+                  <div className="space-y-8">
+                    {/* Videos Section */}
+                    {project.videos && project.videos.length > 0 && (
+                      <div className="space-y-3">
+                        <h4 className="text-[10px] font-bold text-white/50 uppercase tracking-widest flex items-center gap-2">
+                          <svg className="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M15 10l4.553-2.276A1 1 0 0121 8.618v6.764a1 1 0 01-1.447.894L15 14M5 18h8a2 2 0 002-2V8a2 2 0 00-2-2H5a2 2 0 00-2 2v8a2 2 0 002 2z"></path></svg>
+                          Generated Animations
+                        </h4>
+                        <div className="flex gap-4 overflow-x-auto pb-4 snap-x custom-scrollbar">
+                          {project.videos.map((vid, idx) => (
+                            <div key={idx} className="snap-center shrink-0 w-[240px] md:w-[280px] rounded-2xl overflow-hidden bg-white/5 border border-white/10 shadow-lg relative group transition-all duration-300 hover:border-white/30">
+                              <video src={vid} autoPlay loop muted playsInline className="w-full h-full object-cover"></video>
+                            </div>
+                          ))}
+                        </div>
+                      </div>
+                    )}
+
+                    {/* Images Section */}
+                    {project.images && project.images.length > 0 && (
+                      <div className="space-y-3">
+                        <h4 className="text-[10px] font-bold text-white/50 uppercase tracking-widest flex items-center gap-2">
+                          <svg className="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M4 16l4.586-4.586a2 2 0 012.828 0L16 16m-2-2l1.586-1.586a2 2 0 012.828 0L20 14m-6-6h.01M6 20h12a2 2 0 002-2V6a2 2 0 00-2-2H6a2 2 0 00-2 2v12a2 2 0 002 2z"></path></svg>
+                          Synthesis Outputs
+                        </h4>
+                        <div className="columns-2 gap-3 space-y-3">
+                          {project.images.map((img, idx) => (
+                            <div key={idx} className="break-inside-avoid rounded-xl overflow-hidden bg-white/5 border border-white/10 group transition-all duration-300 hover:border-white/30">
+                              <img src={img} alt={`Output ${idx}`} loading="lazy" className="w-full h-auto object-cover opacity-90 group-hover:opacity-100 group-hover:scale-105 transition-all duration-500" />
+                            </div>
+                          ))}
+                        </div>
+                      </div>
+                    )}
+                  </div>
+                ) : (
+                  /* Video placeholder */
+                  <div className="w-full h-full bg-white/5 rounded-xl border border-white/10 flex items-center justify-center">
+                    <div className="text-center p-6">
+                      <svg className="w-10 h-10 text-white/20 mx-auto mb-2" fill="none" stroke="currentColor" viewBox="0 0 24 24" strokeWidth="1.5"><path strokeLinecap="round" strokeLinejoin="round" d="M21 12a9 9 0 11-18 0 9 9 0 0118 0z" /><path strokeLinecap="round" strokeLinejoin="round" d="M15.91 11.672a.375.375 0 010 .656l-5.603 3.113a.375.375 0 01-.557-.328V8.887c0-.286.307-.466.557-.327l5.603 3.112z" /></svg>
+                      <p className="text-white/30 text-xs">{project.resultPlaceholder}</p>
+                    </div>
+                  </div>
+                )}
+              </div>
             </motion.div>
           )}
         </AnimatePresence>
