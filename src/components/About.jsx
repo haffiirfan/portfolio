@@ -31,33 +31,28 @@ const About = () => {
             Operating at the intersection of computer vision, GPU orchestration, and full-stack deployment, my focus is singular: transforming complex AI research into robust, production-grade systems.
           </p>
 
-          {/* Tech Icons (inline SVGs) */}
-          <div className="flex items-center gap-10 mt-8">
+          {/* Tech Icons — Sushmita style */}
+          <div className="flex items-center gap-8 mt-10">
+            {/* Springer Nature */}
+            <div data-aos="zoom-in" data-aos-delay="300" className="w-20 h-20 md:w-24 md:h-24 flex items-center justify-center hover:scale-110 transition-transform duration-300 cursor-pointer" title="Springer Nature">
+              <svg viewBox="0 0 100 100" className="w-16 h-16 drop-shadow-2xl">
+                <circle cx="50" cy="50" r="48" fill="white" stroke="#2D6EB5" strokeWidth="3"/>
+                <text x="50" y="38" textAnchor="middle" fontFamily="serif" fontSize="14" fontWeight="bold" fill="#2D6EB5">Springer</text>
+                <text x="50" y="55" textAnchor="middle" fontFamily="serif" fontSize="14" fontWeight="bold" fill="#2D6EB5">Nature</text>
+                <rect x="25" y="62" width="50" height="3" rx="1.5" fill="#2D6EB5"/>
+                <text x="50" y="78" textAnchor="middle" fontFamily="sans-serif" fontSize="9" fill="#555">Publisher</text>
+              </svg>
+            </div>
             {/* PyTorch */}
-            <div data-aos="zoom-in" data-aos-delay="300" className="w-20 h-20 md:w-24 md:h-24 flex items-center justify-center hover:scale-110 transition-transform duration-300 cursor-pointer">
+            <div data-aos="zoom-in" data-aos-delay="450" className="w-20 h-20 md:w-24 md:h-24 flex items-center justify-center hover:scale-110 transition-transform duration-300 cursor-pointer" title="PyTorch">
               <svg viewBox="0 0 488 512" className="w-16 h-16 drop-shadow-2xl" fill="white">
                 <path d="M488 256c0 60.2-24.2 114.7-63.5 154.4l-34.3-34.3c29.7-29.7 48-70.7 48-116.1 0-91.5-74.5-166-166-166V60l-60 60 60 60v-34c73.7 0 134 60.3 134 134 0 36.9-14.9 70.2-39.1 94.4l-34.3-34.3c14.6-14.6 23.6-34.7 23.6-56.9 0-46.3-37.7-84-84-84v34l-60-60 60-60V56c110.5 0 200 89.5 200 200zM180 296c0-22.1 17.9-40 40-40s40 17.9 40 40-17.9 40-40 40-40-17.9-40-40z"/>
               </svg>
             </div>
-            {/* NVIDIA/CUDA */}
-            <div data-aos="zoom-in" data-aos-delay="450" className="w-20 h-20 md:w-24 md:h-24 flex items-center justify-center hover:scale-110 transition-transform duration-300 cursor-pointer">
+            {/* NVIDIA CUDA */}
+            <div data-aos="zoom-in" data-aos-delay="600" className="w-20 h-20 md:w-24 md:h-24 flex items-center justify-center hover:scale-110 transition-transform duration-300 cursor-pointer" title="NVIDIA CUDA">
               <svg viewBox="0 0 24 24" className="w-14 h-14 drop-shadow-2xl" fill="#76B900">
                 <path d="M8.948 8.798v-1.43a6.7 6.7 0 0 1 .424-.018c3.922-.124 6.493 3.374 6.493 3.374s-2.774 3.851-5.75 3.851a4.2 4.2 0 0 1-1.167-.166V9.937c1.472.183 1.768.762 2.648 2.11l1.97-1.65S11.62 8.742 9.372 8.742c-.144 0-.284.019-.424.056m0-4.505v2.075l.424-.061c5.272-.746 8.793 4.19 8.793 4.19s-4.048 4.862-7.834 4.862a5.3 5.3 0 0 1-1.383-.181v1.077c.41.073.833.11 1.26.11 3.713 0 6.4-1.898 9.004-4.103 .431.346 2.197 1.188 2.56 1.553-2.455 2.063-8.181 3.87-11.498 3.87a8 8 0 0 1-1.326-.108v1.745h13.082V4.293zm0 11.453v1.2c-3.503-.646-4.476-4.389-4.476-4.389s1.675-1.86 4.476-2.137v1.316c-1.472-.183-2.648.98-2.648.98s.652 2.167 2.648 3.03M2.97 4.293v17.345h3.689V3.91c-4.108.845-6.85 4.285-6.85 4.285s1.478 3.267 3.16 4.242V4.293z"/>
-              </svg>
-            </div>
-            {/* Hugging Face */}
-            <div data-aos="zoom-in" data-aos-delay="600" className="w-20 h-20 md:w-24 md:h-24 flex items-center justify-center hover:scale-110 transition-transform duration-300 cursor-pointer">
-              <svg viewBox="0 0 120 120" className="w-16 h-16 drop-shadow-2xl" fill="none">
-                <circle cx="60" cy="60" r="58" fill="#FFD21E" stroke="black" strokeWidth="2"/>
-                <ellipse cx="42" cy="52" rx="8" ry="10" fill="white"/>
-                <ellipse cx="78" cy="52" rx="8" ry="10" fill="white"/>
-                <circle cx="42" cy="55" r="5" fill="#1a1a2e"/>
-                <circle cx="78" cy="55" r="5" fill="#1a1a2e"/>
-                <circle cx="44" cy="53" r="2" fill="white"/>
-                <circle cx="80" cy="53" r="2" fill="white"/>
-                <path d="M38 75 Q60 95 82 75" stroke="#1a1a2e" strokeWidth="3" fill="none" strokeLinecap="round"/>
-                <ellipse cx="28" cy="65" rx="8" ry="5" fill="#FF6B6B" opacity="0.5"/>
-                <ellipse cx="92" cy="65" rx="8" ry="5" fill="#FF6B6B" opacity="0.5"/>
               </svg>
             </div>
           </div>
