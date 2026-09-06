@@ -79,6 +79,30 @@ const miniProjects = [
   }
 ];
 
+const VideoCard = ({ src }) => {
+  const [isMuted, setIsMuted] = useState(true);
+
+  return (
+    <div className="snap-center shrink-0 w-[240px] md:w-[280px] rounded-2xl overflow-hidden bg-white/5 border border-white/10 shadow-lg relative group transition-all duration-300 hover:border-white/30">
+      <video src={src} autoPlay loop muted={isMuted} playsInline className="w-full h-full object-cover"></video>
+      <button
+        onClick={(e) => {
+          e.stopPropagation();
+          setIsMuted(!isMuted);
+        }}
+        className="absolute bottom-3 right-3 bg-black/60 hover:bg-black/80 text-white p-2 rounded-full backdrop-blur-sm transition-all duration-300 z-10 opacity-0 group-hover:opacity-100"
+        title={isMuted ? "Unmute" : "Mute"}
+      >
+        {isMuted ? (
+          <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M5.586 15H4a1 1 0 01-1-1v-4a1 1 0 011-1h1.586l4.707-4.707C10.923 3.663 12 4.109 12 5v14c0 .891-1.077 1.337-1.707.707L5.586 15z" /><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M17 14l2-2m0 0l2-2m-2 2l-2-2m2 2l2 2" /></svg>
+        ) : (
+          <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M15.536 8.464a5 5 0 010 7.072m2.828-9.9a9 9 0 010 12.728M5.586 15H4a1 1 0 01-1-1v-4a1 1 0 011-1h1.586l4.707-4.707C10.923 3.663 12 4.109 12 5v14c0 .891-1.077 1.337-1.707.707L5.586 15z" /></svg>
+        )}
+      </button>
+    </div>
+  );
+};
+
 /* ── Featured Card with smooth slide revert ──────────── */
 const FeaturedCard = ({ project, index }) => {
   const [showResults, setShowResults] = useState(false);
@@ -173,9 +197,7 @@ const FeaturedCard = ({ project, index }) => {
                         </h4>
                         <div className="flex gap-4 overflow-x-auto pb-4 snap-x custom-scrollbar">
                           {project.videos.map((vid, idx) => (
-                            <div key={idx} className="snap-center shrink-0 w-[240px] md:w-[280px] rounded-2xl overflow-hidden bg-white/5 border border-white/10 shadow-lg relative group transition-all duration-300 hover:border-white/30">
-                              <video src={vid} autoPlay loop muted playsInline className="w-full h-full object-cover"></video>
-                            </div>
+                            <VideoCard key={idx} src={vid} />
                           ))}
                         </div>
                       </div>
