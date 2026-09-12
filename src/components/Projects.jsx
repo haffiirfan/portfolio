@@ -81,24 +81,67 @@ const miniProjects = [
 
 const VideoCard = ({ src }) => {
   const [isMuted, setIsMuted] = useState(true);
+  const [isLoaded, setIsLoaded] = useState(false);
 
   return (
-    <div className="snap-center shrink-0 w-[240px] md:w-[280px] rounded-2xl overflow-hidden bg-white/5 border border-white/10 shadow-lg relative group transition-all duration-300 hover:border-white/30">
-      <video src={src} autoPlay loop muted={isMuted} playsInline className="w-full h-full object-cover"></video>
-      <button
-        onClick={(e) => {
-          e.stopPropagation();
-          setIsMuted(!isMuted);
-        }}
-        className="absolute bottom-3 right-3 bg-black/60 hover:bg-black/80 text-white p-2 rounded-full backdrop-blur-sm transition-all duration-300 z-10 opacity-0 group-hover:opacity-100"
-        title={isMuted ? "Unmute" : "Mute"}
-      >
-        {isMuted ? (
-          <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M5.586 15H4a1 1 0 01-1-1v-4a1 1 0 011-1h1.586l4.707-4.707C10.923 3.663 12 4.109 12 5v14c0 .891-1.077 1.337-1.707.707L5.586 15z" /><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M17 14l2-2m0 0l2-2m-2 2l-2-2m2 2l2 2" /></svg>
-        ) : (
-          <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M15.536 8.464a5 5 0 010 7.072m2.828-9.9a9 9 0 010 12.728M5.586 15H4a1 1 0 01-1-1v-4a1 1 0 011-1h1.586l4.707-4.707C10.923 3.663 12 4.109 12 5v14c0 .891-1.077 1.337-1.707.707L5.586 15z" /></svg>
-        )}
-      </button>
+    <div className="snap-center shrink-0 w-[240px] md:w-[280px] rounded-2xl overflow-hidden bg-white/5 border border-white/10 shadow-lg relative group transition-all duration-300 hover:border-white/30 min-h-[300px] flex items-center justify-center">
+      
+      {/* Loading Skeleton */}
+      {!isLoaded && (
+        <div className="absolute inset-0 w-full h-full bg-[#1a1a1a] animate-pulse flex flex-col items-center justify-center z-0">
+          <svg className="w-8 h-8 text-white/20 animate-spin mb-3" fill="none" viewBox="0 0 24 24">
+            <circle className="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" strokeWidth="4"></circle>
+            <path className="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"></path>
+          </svg>
+          <span className="text-[10px] text-white/40 uppercase tracking-[0.2em] font-bold">Buffering Engine</span>
+        </div>
+      )}
+
+      <video 
+        src={src} 
+        autoPlay 
+        loop 
+        muted={isMuted} 
+        playsInline 
+        onLoadedData={() => setIsLoaded(true)}
+        className={`w-full h-full object-cover transition-opacity duration-700 relative z-10 ${isLoaded ? 'opacity-100' : 'opacity-0'}`}
+      ></video>
+
+      {isLoaded && (
+        <button
+          onClick={(e) => {
+            e.stopPropagation();
+            setIsMuted(!isMuted);
+          }}
+          className="absolute bottom-3 right-3 bg-black/60 hover:bg-black/80 text-white p-2 rounded-full backdrop-blur-sm transition-all duration-300 z-20 opacity-0 group-hover:opacity-100"
+          title={isMuted ? "Unmute" : "Mute"}
+        >
+          {isMuted ? (
+            <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M5.586 15H4a1 1 0 01-1-1v-4a1 1 0 011-1h1.586l4.707-4.707C10.923 3.663 12 4.109 12 5v14c0 .891-1.077 1.337-1.707.707L5.586 15z" /><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M17 14l2-2m0 0l2-2m-2 2l-2-2m2 2l2 2" /></svg>
+          ) : (
+            <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M15.536 8.464a5 5 0 010 7.072m2.828-9.9a9 9 0 010 12.728M5.586 15H4a1 1 0 01-1-1v-4a1 1 0 011-1h1.586l4.707-4.707C10.923 3.663 12 4.109 12 5v14c0 .891-1.077 1.337-1.707.707L5.586 15z" /></svg>
+          )}
+        </button>
+      )}
+    </div>
+  );
+};
+
+const ImageCard = ({ src, alt }) => {
+  const [isLoaded, setIsLoaded] = useState(false);
+
+  return (
+    <div className="break-inside-avoid rounded-xl overflow-hidden bg-white/5 border border-white/10 group transition-all duration-300 hover:border-white/30 relative min-h-[120px]">
+      {!isLoaded && (
+        <div className="absolute inset-0 w-full h-full bg-[#1a1a1a] animate-pulse"></div>
+      )}
+      <img 
+        src={src} 
+        alt={alt} 
+        loading="lazy" 
+        onLoad={() => setIsLoaded(true)}
+        className={`w-full h-auto object-cover opacity-90 group-hover:opacity-100 group-hover:scale-105 transition-all duration-700 ${isLoaded ? 'blur-none scale-100' : 'blur-md scale-110'}`} 
+      />
     </div>
   );
 };
@@ -212,9 +255,7 @@ const FeaturedCard = ({ project, index }) => {
                         </h4>
                         <div className="columns-2 gap-3 space-y-3">
                           {project.images.map((img, idx) => (
-                            <div key={idx} className="break-inside-avoid rounded-xl overflow-hidden bg-white/5 border border-white/10 group transition-all duration-300 hover:border-white/30">
-                              <img src={img} alt={`Output ${idx}`} loading="lazy" className="w-full h-auto object-cover opacity-90 group-hover:opacity-100 group-hover:scale-105 transition-all duration-500" />
-                            </div>
+                            <ImageCard key={idx} src={img} alt={`Output ${idx}`} />
                           ))}
                         </div>
                       </div>

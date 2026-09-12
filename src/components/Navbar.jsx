@@ -25,15 +25,8 @@ const Navbar = () => {
       }`}
     >
       <div className="max-w-7xl mx-auto px-6 md:px-12 flex justify-between items-center">
+        {/* Logo removed as requested */}
         <div className="flex items-center">
-          <a
-            href="#"
-            className={`text-2xl font-black tracking-tight transition-colors duration-500 ${
-              isOpen || !isScrolled ? 'text-white' : 'text-gray-900'
-            }`}
-          >
-            Haffi <span className="text-[#800000]">.</span>
-          </a>
         </div>
 
         <div className="hidden md:flex space-x-7 lg:space-x-8">

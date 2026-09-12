@@ -1,37 +1,20 @@
 import React from 'react';
-import profileImage from '../assets/haffiCover.png';
 
 const About = () => {
   return (
-    <section id="about" className="bg-[#800000] pt-20 pb-40 px-6 md:px-12 w-full relative overflow-hidden font-sans">
-      <div className="max-w-6xl mx-auto flex flex-col md:flex-row gap-16 items-start">
+    <section id="about" className="bg-[#800000] pt-20 pb-24 px-6 md:px-12 w-full relative overflow-hidden font-sans">
+      <div className="max-w-6xl mx-auto">
 
-        {/* Left: Lanyard ID Badge */}
-        <div className="flex flex-col items-center w-full md:w-[350px] shrink-0 mt-12 md:mt-0">
-          <div data-aos="drop-bounce" className="relative flex justify-center w-full">
-            <div className="absolute -top-32 left-1/2 w-3 h-40 bg-black transform -translate-x-1/2 shadow-inner z-0"></div>
-            <div className="absolute -top-6 left-1/2 w-6 h-12 bg-gray-300 rounded border border-gray-400 transform -translate-x-1/2 z-10 shadow-[0_2px_10px_rgba(0,0,0,0.3)]"></div>
-            <div className="bg-gray-900 w-full max-w-[280px] rounded-2xl p-3 shadow-[0_20px_40px_rgba(0,0,0,0.4)] relative z-20 transform -rotate-3 hover:rotate-0 transition-transform duration-500">
-              <div className="absolute -top-3 left-1/2 w-16 h-6 bg-gray-900 rounded-t-xl transform -translate-x-1/2 flex justify-center items-center">
-                <div className="w-8 h-2 bg-black/30 rounded-full shadow-inner"></div>
-              </div>
-              <div className="w-full aspect-[3/4] overflow-hidden rounded-xl bg-gray-800 border-2 border-transparent">
-                <img src={profileImage} alt="Haffi Irfan" className="w-full h-full object-cover" />
-              </div>
-            </div>
-          </div>
-        </div>
-
-        {/* Right: Info */}
-        <div data-aos="fade-left" data-aos-delay="200" className="flex-1 text-white mt-8 md:mt-0 relative z-20">
-          <p className="text-lg md:text-xl font-medium mb-8 leading-relaxed max-w-3xl text-white/90">
+        {/* Full-width text content (no image card) */}
+        <div data-aos="fade-up" data-aos-delay="100" className="text-white relative z-20">
+          <p className="text-lg md:text-xl lg:text-2xl font-medium mb-8 leading-relaxed max-w-4xl text-white/90">
             Driven by an intense year of independent research into diffusion synthesis and memory-efficient inference, I authored a first-author manuscript currently under peer review at Springer Nature. My work bridges the gap between theoretical literature and systems engineering. Most notably, I engineered a six-model generative pipeline that dynamically orchestrates 60 GB of weights on constrained consumer hardware.
           </p>
-          <p className="text-base md:text-lg font-medium leading-relaxed max-w-3xl text-white/70">
+          <p className="text-base md:text-lg font-medium leading-relaxed max-w-4xl text-white/70">
             Operating at the intersection of computer vision, GPU orchestration, and full-stack deployment, my focus is singular: transforming complex AI research into robust, production-grade systems.
           </p>
 
-          {/* Tech Icons — Sushmita style */}
+          {/* Tech Icons */}
           <div className="flex items-center gap-8 mt-10">
             {/* Springer Nature */}
             <div data-aos="zoom-in" data-aos-delay="300" className="w-20 h-20 md:w-24 md:h-24 flex items-center justify-center hover:scale-110 transition-transform duration-300 cursor-pointer" title="Springer Nature">
