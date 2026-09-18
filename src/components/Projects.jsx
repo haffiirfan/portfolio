@@ -6,7 +6,7 @@ const projects = [
     title: 'NeuroAnimate',
     category: 'GENERATIVE AI · MULTI-MODEL · DUAL-GPU',
     subtitle: 'Multimodal Synthesis for 3D-styled Imagery',
-    description: 'A six-stage generative pipeline that converts a single text prompt into a fully animated, hyper-realistic portrait video. Mistral-7B rewrites the user prompt into a cinematic scene description. Stable Diffusion XL synthesizes a high-fidelity base portrait. InsightFace extracts and aligns facial identity landmarks while LivePortrait drives 3D-aware facial retargeting with custom body motion templates. Lastly, Real-ESRGAN upscales every frame to 1.5x clarity. FFmpeg composites the final MP4 with audio sync. DMO loads/unloads each model sequentially, fitting 60.1 GB of combined weights into 32 GB of dual-T4 VRAM. Dual-GPU parallel frame enhancement cuts upscaling latency by 33.1%. while Three-mode LLM prompt enhancement achieves a CLIP alignment score of 0.35.',
+    description: 'A six-stage generative pipeline that converts a single text prompt into a fully animated, hyper-realistic portrait video, orchestrating Mistral-7B, SDXL Base+Refiner, InsightFace, LivePortrait, and Real-ESRGAN under a custom Dynamic Memory Orchestration (DMO) framework. DMO serializes model lifecycles across two T4 GPUs, loading and fully offloading each stage before the next begins, fitting 60.1 GB of combined weights into 32 GB of VRAM without quantization or quality loss. Three-mode LLM prompt enhancement (Direct, Enhanced, Cinematic) rewrites user input through Mistral-7B with structured JSON schema enforcement, achieving a CLIP alignment score of 0.35 against ground-truth descriptions. InsightFace extracts 512-dimensional facial embeddings via ONNX Runtime while LivePortrait drives 3D-aware facial retargeting with custom body-motion templates and stitching-based compositing. Dual-GPU parallel frame enhancement distributes Real-ESRGAN 1.5x upscaling across both T4s via round-robin frame allocation, cutting upscaling latency by 33.1% compared to single-GPU sequential processing. Dependency conflicts between diffusers, insightface, and liveportrait were resolved through isolated virtual environments with subprocess bridging. FFmpeg composites the final MP4 with audio synchronization and configurable framerate. The full pipeline is served through a Gradio interface with real-time progress tracking and intermediate preview rendering.',
     tech: ['PyTorch', 'Diffusers', 'ONNX Runtime', 'CUDA', 'Gradio', 'LivePortrait', 'InsightFace', 'Real-ESRGAN'],
     github: 'https://github.com/haffiirfan/NeuroAnimate-Multimodal-Synthesis-for-3D-styled-imagery-hyper-realistic-Shorts',
     metrics: ['60.1 GB in 32 GB VRAM', '33.1% faster upscaling', 'CLIP 0.35', '6 Models Orchestrated'],
@@ -37,12 +37,15 @@ const projects = [
   {
     title: 'SafetyIQ',
     category: 'COMPUTER VISION · RAG · REAL-TIME',
-    subtitle: 'AI-Driven Construction Safety Monitoring',
-    description: 'An end-to-end construction site safety system that fuses real-time object detection with retrieval-augmented report generation. YOLOv11s was fine-tuned on a custom dataset of 44,000 annotated PPE images (helmets, vests, goggles, gloves) achieving 0.75+ mAP@0.5. Detections stream over WebSocket to a React dashboard at under 20 ms per frame. When a violation is detected, ChromaDB retrieves the most relevant safety regulation chunks and T5 generates a natural-language incident report with severity scoring. PostgreSQL stores detection logs, worker profiles, and historical analytics. FastAPI serves the inference endpoint, the RAG pipeline, and a REST API for the React frontend.',
-    tech: ['YOLOv11', 'FastAPI', 'React', 'PostgreSQL', 'ChromaDB', 'T5', 'WebSocket', 'Roboflow'],
+    subtitle: 'Intelligent Construction Site Safety Monitoring Incidental System',
+    description: 'A full-stack, containerized AI system unifying real-time computer vision and retrieval-augmented incident intelligence, built on FastAPI, React, PostgreSQL, and Docker Compose for reproducible, one-command deployment. YOLOv11m was fine-tuned on a curated 9-class PPE detection dataset with targeted undersampling and augmentation-diversified oversampling via Albumentations, achieving 73.8% mAP@0.5 and 85.0% recall. A RAG pipeline (sentence-transformers embeddings, ChromaDB vector retrieval, Qwen2.5-1.5B-Instruct generation) constrains incident-report synthesis to retrieved database records on structured, safety-critical data. A normalized 6-table relational schema (PostgreSQL, SQLAlchemy ORM, Alembic migrations) handles automatic detection logging, confidence-threshold violation flagging, and persistent database-backed deduplication. Real-time FastAPI + WebSocket inference streams live OpenCV camera frames with Critical/High/Medium risk classification, benchmarked at 817ms/frame on CPU. The React + Vite dashboard provides live camera feeds, zone-level violation aggregation, and a natural-language query interface achieving 0.82 semantic similarity via BERTScore.',
+    tech: ['YOLOv11', 'FastAPI', 'React', 'PostgreSQL', 'ChromaDB', 'Qwen2.5', 'WebSocket', 'Docker', 'SQLAlchemy'],
     github: 'https://github.com/haffiirfan/SafetyIQ-AI-Driven-Construction-Safety-Monitoring',
-    metrics: ['0.75+ mAP@0.5', '<20ms latency', '44K training images', 'RAG + T5 Reports'],
+    metrics: ['73.8% mAP@0.5', '85% Recall', '0.82 BERTScore', '817ms/frame CPU'],
     resultPlaceholder: 'Screen recordings and demo videos coming soon',
+    videos: [
+      '/safetyiq.mp4',
+    ],
   },
 ];
 
@@ -79,12 +82,12 @@ const miniProjects = [
   }
 ];
 
-const VideoCard = ({ src }) => {
+const VideoCard = ({ src, fullWidth }) => {
   const [isMuted, setIsMuted] = useState(true);
   const [isLoaded, setIsLoaded] = useState(false);
 
   return (
-    <div className="snap-center shrink-0 w-[240px] md:w-[280px] rounded-2xl overflow-hidden bg-white/5 border border-white/10 shadow-lg relative group transition-all duration-300 hover:border-white/30 min-h-[300px] flex items-center justify-center">
+    <div className={`snap-center shrink-0 ${fullWidth ? 'w-full' : 'w-[240px] md:w-[280px]'} rounded-2xl overflow-hidden bg-white/5 border border-white/10 shadow-lg relative group transition-all duration-300 hover:border-white/30 min-h-[200px] flex items-center justify-center`}>
       
       {/* Loading Skeleton */}
       {!isLoaded && (
@@ -236,11 +239,13 @@ const FeaturedCard = ({ project, index }) => {
                       <div className="space-y-3">
                         <h4 className="text-[10px] font-bold text-white/50 uppercase tracking-widest flex items-center gap-2">
                           <svg className="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M15 10l4.553-2.276A1 1 0 0121 8.618v6.764a1 1 0 01-1.447.894L15 14M5 18h8a2 2 0 002-2V8a2 2 0 00-2-2H5a2 2 0 00-2 2v8a2 2 0 002 2z"></path></svg>
-                          Generated Animations
+                          {project.title === 'NeuroAnimate' ? 'Generated Animations' : 'Demo'}
                         </h4>
-                        <div className="flex gap-4 overflow-x-auto pb-4 snap-x custom-scrollbar">
+                        <div className={`flex gap-4 overflow-x-auto pb-4 snap-x custom-scrollbar ${project.videos.length === 1 ? '' : ''}`}>
                           {project.videos.map((vid, idx) => (
-                            <VideoCard key={idx} src={vid} />
+                            <div key={idx} className={project.videos.length === 1 ? 'w-full' : ''}>
+                              <VideoCard src={vid} fullWidth={project.videos.length === 1} />
+                            </div>
                           ))}
                         </div>
                       </div>
