@@ -80,9 +80,9 @@ const Hero = () => {
           <p
             data-aos="fade-up"
             data-aos-delay="250"
-            className="text-white/80 text-sm md:text-base lg:text-lg font-medium mb-10 max-w-sm md:max-w-md leading-relaxed"
+            className="text-white/80 text-sm md:text-base lg:text-lg font-medium mb-10 max-w-md lg:max-w-lg leading-relaxed"
           >
-            I build multi-model AI pipelines on constrained hardware and ship computer vision systems into production.
+            I research memory-efficient orchestration for multi-model generative pipelines. My first-author work on runtime VRAM scheduling across six foundation models is under peer review at Springer Nature.
           </p>
 
           <div
